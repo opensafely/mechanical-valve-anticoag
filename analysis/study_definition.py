@@ -20,6 +20,8 @@ study = StudyDefinition(
         mechanical_valve
         """),
 
+    index_date="2021-03-31",
+
     registered = patients.registered_as_of(
     	"index_date",
         return_expectations={"incidence": 0.9},),
