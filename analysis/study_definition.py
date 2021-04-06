@@ -42,7 +42,7 @@ study = StudyDefinition(
 
 
     mechanical_valve=patients.with_these_clinical_events(
-        mecahnical_valve_codes,
+        mechanical_valve_codes,
         on_or_before="index_date",
         returning="binary_flag",
         return_expectations={"incidence": 0.01,},
