@@ -1,4 +1,4 @@
-from cohortextractor import StudyDefinition, measure patients, codelist, codelist_from_csv
+from cohortextractor import StudyDefinition, measure, patients, codelist, codelist_from_csv
 
 
 study = StudyDefinition(

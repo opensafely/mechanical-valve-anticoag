@@ -10,9 +10,10 @@ doac_codes = codelist_from_csv(
     column="id",
 )
 
+# https://github.com/opensafely/codelist-development/issues/91
+# The following is a placeholder but should be replaced by above issue
 mecahnical_valve_codes = codelist_from_csv(
-    "codelists/xx.csv",
-    system="snomed",
-    column="id",
+    "codelists/opensafely-valvular-atrial-fibrillation-6cab4902.csv",
+    system="ctv3",
+    column="code",
 )
-
