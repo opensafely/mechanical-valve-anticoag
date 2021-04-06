@@ -25,7 +25,7 @@ study = StudyDefinition(
         AND
         mechanical_valve
         """,
-        
+
             registered=patients.registered_as_of(
                 "index_date", return_expectations={"incidence": 0.9},
             ),
@@ -54,7 +54,7 @@ study = StudyDefinition(
 
       doac=patients.with_these_medications(
         doac_codes,
-        between=["index date", last_day_of_month("index_date")],
+        between=["index date", "last_day_of_month(index_date)"],
         return_expectations={"incidence": 0.2},
     ),
    
