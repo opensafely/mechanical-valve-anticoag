@@ -8,6 +8,7 @@ from cohortextractor import (
 from codelists import *
 
 
+
 study = StudyDefinition(
     # Configure the expectations framework
     default_expectations={
@@ -24,6 +25,7 @@ study = StudyDefinition(
         AND
         mechanical_valve
         """
+
 
  registered=patients.registered_as_of(
         "index_date", return_expectations={"incidence": 0.9},
@@ -48,11 +50,8 @@ study = StudyDefinition(
     ),
   
 
-
-
-
-    ),
-    index_date="2021-03-31",
+   ),
+    index_date="2021-04-01",
 
       doac=patients.with_these_medications(
         doac_codes,
