@@ -1,0 +1,16 @@
+{
+  "files": {
+    "opensafely-direct-acting-oral-anticoagulants-doac.csv": {
+      "id": "opensafely/direct-acting-oral-anticoagulants-doac/2020-10-05",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/direct-acting-oral-anticoagulants-doac/2020-10-05/",
+      "downloaded_at": "2021-04-06 10:54:36.564495Z",
+      "sha": "50f69d9c0bcb0e58aadb76fb4749d33f74f66253"
+    },
+    "opensafely-valvular-atrial-fibrillation.csv": {
+      "id": "opensafely/valvular-atrial-fibrillation/6cab4902",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/valvular-atrial-fibrillation/6cab4902/",
+      "downloaded_at": "2021-04-06 10:54:36.678505Z",
+      "sha": "2577dc875f853c964ec9b8cf2b6bb77ffb6fec1b"
+    }
+  }
+}
