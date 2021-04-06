@@ -1,62 +1,58 @@
-from cohortextractor import StudyDefinition, Measure, patients, codelist, codelist_from_csv
+from cohortextractor import (
+    StudyDefinition,
+    Measure,
+    patients,
+    codelist,
+    codelist_from_csv,
+)
 from codelists import *
 
 
 study = StudyDefinition(
-	    # Configure the expectations framework
+    # Configure the expectations framework
     default_expectations={
         "date": {"earliest": "2020-01-01", "latest": "today"},
         "rate": "exponential_increase",
-        "incidence" : 0.2
+        "incidence": 0.2,
     },
-
-    population_denom = patients.satisfying(
-    	"""registered 
+    population=patients.satisfying(
+        """registered 
     	AND
         (NOT has_died) 
         AND
         age>=16 AND age <= 120 
         AND
         mechanical_valve
-        """),
-
+        """
+    ),
     index_date="2021-03-31",
-
-    registered = patients.registered_as_of(
-    	"index_date",
-        return_expectations={"incidence": 0.9},),
-
+    registered=patients.registered_as_of(
+        "index_date", return_expectations={"incidence": 0.9},
+    ),
     has_died=patients.died_from_any_cause(
         on_or_before="index_date",
         returning="binary_flag",
         return_expectations={"incidence": 0.05},
     ),
-
-     
     age=patients.age_as_of(
-        "index_date",  
+        "index_date",
         return_expectations={
             "rate": "universal",
             "int": {"distribution": "population_ages"},
         },
     ),
-
-
     mechanical_valve=patients.with_these_clinical_events(
         mechanical_valve_codes,
         on_or_before="index_date",
         returning="binary_flag",
         return_expectations={"incidence": 0.01,},
     ),
-
-
     doac=patients.with_these_medications(
         doac_codes,
         between=["index_date - 3 months", "index_date"],
         return_expectations={"incidence": 0.2},
     ),
-
-     # stp is an NHS administration region based on geography
+    # stp is an NHS administration region based on geography
     stp=patients.registered_practice_as_of(
         "index_date",
         returning="stp_code",
@@ -78,15 +74,12 @@ study = StudyDefinition(
             },
         },
     ),
-
-
-measures = [
-    Measure(
-        id = "doac_rx_mechanical_valve",
-        numerator = "doac",
-        denominator = "population_denom",
-        group_by = "stp",
-    ),
-]
-
+    measures=[
+        Measure(
+            id="doac_rx_mechanical_valve",
+            numerator="doac",
+            denominator="population",
+            group_by="stp",
+        ),
+    ],
 )
