@@ -26,7 +26,7 @@ study = StudyDefinition(
         return_expectations={"incidence": 0.9},),
 
     has_died=patients.died_from_any_cause(
-        on_or_before=index_date,
+        on_or_before="index_date",
         returning="binary_flag",
         return_expectations={"incidence": 0.05},
     ),
@@ -43,7 +43,7 @@ study = StudyDefinition(
 
     mechanical_valve=patients.with_these_clinical_events(
         mecahnical_valve_codes,
-        on_or_before=index_date,
+        on_or_before="index_date",
         returning="binary_flag",
         return_expectations={"incidence": 0.01,},
     ),
@@ -57,7 +57,7 @@ study = StudyDefinition(
 
      # stp is an NHS administration region based on geography
     stp=patients.registered_practice_as_of(
-        index_date,
+        "index_date",
         returning="stp_code",
         return_expectations={
             "rate": "universal",
