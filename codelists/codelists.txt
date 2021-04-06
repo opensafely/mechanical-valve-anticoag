@@ -1,2 +1,2 @@
 opensafely/direct-acting-oral-anticoagulants-doac/2020-10-05
-opensafely/valvular-atrial-fibrillation/6cab4902/
+opensafely/valvular-atrial-fibrillation/6cab4902
