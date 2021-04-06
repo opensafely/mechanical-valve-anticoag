@@ -2,8 +2,7 @@ from cohortextractor import StudyDefinition, measure, patients, codelist, codeli
 
 
 study = StudyDefinition(
-	index_date="2021-03-31",
-    # Configure the expectations framework
+	    # Configure the expectations framework
     default_expectations={
         "date": {"earliest": "2020-01-01", "latest": "today"},
         "rate": "exponential_increase",
