@@ -27,7 +27,7 @@ study = StudyDefinition(
         """
 
 
- registered=patients.registered_as_of(
+    registered=patients.registered_as_of(
         "index_date", return_expectations={"incidence": 0.9},
     ),
     has_died=patients.died_from_any_cause(
