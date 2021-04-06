@@ -24,9 +24,8 @@ study = StudyDefinition(
         AND
         mechanical_valve
         """
-    ),
-    index_date="2021-03-31",
-    registered=patients.registered_as_of(
+
+ registered=patients.registered_as_of(
         "index_date", return_expectations={"incidence": 0.9},
     ),
     has_died=patients.died_from_any_cause(
@@ -47,11 +46,20 @@ study = StudyDefinition(
         returning="binary_flag",
         return_expectations={"incidence": 0.01,},
     ),
-    doac=patients.with_these_medications(
+  
+
+
+
+
+    ),
+    index_date="2021-03-31",
+
+      doac=patients.with_these_medications(
         doac_codes,
         between=["index_date - 3 months", "index_date"],
         return_expectations={"incidence": 0.2},
     ),
+   
     # stp is an NHS administration region based on geography
     stp=patients.registered_practice_as_of(
         "index_date",
