@@ -24,30 +24,29 @@ study = StudyDefinition(
         age>=16 AND age <= 120 
         AND
         mechanical_valve
-        """
-
-
-    registered=patients.registered_as_of(
-        "index_date", return_expectations={"incidence": 0.9},
-    ),
-    has_died=patients.died_from_any_cause(
-        on_or_before="index_date",
-        returning="binary_flag",
-        return_expectations={"incidence": 0.05},
-    ),
-    age=patients.age_as_of(
-        "index_date",
-        return_expectations={
-            "rate": "universal",
-            "int": {"distribution": "population_ages"},
-        },
-    ),
-    mechanical_valve=patients.with_these_clinical_events(
-        mechanical_valve_codes,
-        on_or_before="index_date",
-        returning="binary_flag",
-        return_expectations={"incidence": 0.01,},
-    ),
+        """,
+        
+            registered=patients.registered_as_of(
+                "index_date", return_expectations={"incidence": 0.9},
+            ),
+            has_died=patients.died_from_any_cause(
+                on_or_before="index_date",
+                returning="binary_flag",
+                return_expectations={"incidence": 0.05},
+            ),
+            age=patients.age_as_of(
+                "index_date",
+                return_expectations={
+                    "rate": "universal",
+                    "int": {"distribution": "population_ages"},
+                },
+            ),
+            mechanical_valve=patients.with_these_clinical_events(
+                mechanical_valve_codes,
+                on_or_before="index_date",
+                returning="binary_flag",
+                return_expectations={"incidence": 0.01,},
+            ),
   
 
    ),
