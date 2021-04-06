@@ -11,9 +11,9 @@ doac_codes = codelist_from_csv(
 )
 
 # https://github.com/opensafely/codelist-development/issues/91
-# The following is a placeholder but should be replaced by above issue
+# The following is a placeholder with a DRAFT codelist but should be replaced by above issue
 mechanical_valve_codes = codelist_from_csv(
-    "codelists/opensafely-valvular-atrial-fibrillation.csv",
-    system="ctv3",
+    "codelists/opensafely-mechanical-or-artificial-valves.csv",
+    system="snomed",
     column="code",
 )
