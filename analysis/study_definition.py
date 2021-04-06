@@ -74,14 +74,13 @@ study = StudyDefinition(
             },
         },
     ),
-   
 )
 
- measures=[
-        Measure(
-            id="doac_rx_mechanical_valve",
-            numerator="doac",
-            denominator="population",
-            group_by="stp",
-        ),
-    ]
+measures = [
+    Measure(
+        id="doac_rx_mechanical_valve",
+        numerator="doac",
+        denominator="population",
+        group_by="stp",
+    ),
+]
