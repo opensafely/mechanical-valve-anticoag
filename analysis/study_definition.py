@@ -1,4 +1,5 @@
 from cohortextractor import StudyDefinition, measure, patients, codelist, codelist_from_csv
+from codelists import *
 
 
 study = StudyDefinition(
@@ -81,7 +82,7 @@ study = StudyDefinition(
 
 measures = [
     Measure(
-        id = "doac_rx_mecahnical_valve",
+        id = "doac_rx_mechanical_valve",
         numerator = "doac",
         denominator = "population_denom",
         group_by = "stp",
