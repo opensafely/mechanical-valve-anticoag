@@ -27,4 +27,5 @@ actions:
     outputs:
       moderately_sensitive:
         notebook: output/measures_notebook.html
+        measures_csv: output/measures_dropped.csv
         csv: output/check.csv
