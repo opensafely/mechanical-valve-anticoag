@@ -19,3 +19,12 @@ actions:
       outputs:
         moderately_sensitive:
           measure_csv: output/measure_*.csv
+
+
+  generate_notebook:
+    run: jupyter:latest jupyter nbconvert /workspace/analysis/measures_notebook.ipynb --execute --to html --output-dir=/workspace/output --ExecutePreprocessor.timeout=86400 --no-input
+    needs: [generate_study_population, generate_measures]
+    outputs:
+      moderately_sensitive:
+        notebook: output/measures_notebook.html
+        csv: output/check.csv
