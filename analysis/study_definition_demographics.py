@@ -51,11 +51,27 @@ study = StudyDefinition(
    ),
     index_date="2021-04-01",
 
+## Medication
       doac=patients.with_these_medications(
         doac_codes,
-        between=["index_date", "last_day_of_month(index_date)"],
+        on_or_before="index_date - 3 months",
         return_expectations={"incidence": 0.2},
     ),
+
+
+## Mechanical Valve
+
+      mechanical_valve=patients.with_these_clinical_events(
+                mechanical_valve_codes,
+                on_or_before="index_date",
+                returning="binary_flag",
+                return_expectations={"incidence": 0.01,},
+            ),
+
+
+## Demographics
+
+
 
     # Index of multiple deprivation
     imd=patients.address_as_of(
@@ -83,7 +99,7 @@ study = StudyDefinition(
         on_or_before="index_date",
         date_format="YYYY-MM-DD",
     ),
-    
+
     # Ethnicity
     eth2001=patients.with_these_clinical_events(
         codelists.eth2001,
