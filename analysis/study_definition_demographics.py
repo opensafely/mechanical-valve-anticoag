@@ -38,6 +38,7 @@ study = StudyDefinition(
         ),
     ),
     index_date="2021-04-01",
+
     ## Medication
     doac=patients.with_these_medications(
         doac_codes,
@@ -51,6 +52,9 @@ study = StudyDefinition(
         returning="binary_flag",
         return_expectations={"incidence": 0.01,},
     ),
+
+    ##Placeholder for AF - CTV3 code exists but we are making a snomed version https://codelists.opensafely.org/codelist/opensafely/atrial-fibrillation-clinical-finding/2020-07-09/
+
     ## Demographics
     ##sex
     sex=patients.sex(
