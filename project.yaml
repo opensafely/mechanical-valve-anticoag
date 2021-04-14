@@ -31,7 +31,7 @@ actions:
         csv: output/check.csv
 
 
-  generate_study_population:
+  generate_study_population_demographics:
     run: cohortextractor:latest generate_cohort --study-definition study_definition_demographics
     outputs:
       highly_sensitive:
