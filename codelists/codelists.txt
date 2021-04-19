@@ -1,2 +1,2 @@
 opensafely/direct-acting-oral-anticoagulants-doac/2020-10-05
-opensafely/mechanical-or-artificial-valves/54ae5cab
+opensafely/mechanical-or-artificial-valves/0ee582f8
