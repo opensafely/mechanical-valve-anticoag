@@ -1,3 +1,8 @@
 opensafely/direct-acting-oral-anticoagulants-doac/2020-10-05
 opensafely/mechanical-or-artificial-valves/0ee582f8
 opensafely/atrial-fibrillation-clinical-finding/2020-07-09
+primis-covid19-vacc-uptake/eth2001/v1
+primis-covid19-vacc-uptake/non_eth2001/v1
+primis-covid19-vacc-uptake/eth_notgiptref/v1
+primis-covid19-vacc-uptake/eth_notstated/v1
+primis-covid19-vacc-uptake/eth_norecord/v1
