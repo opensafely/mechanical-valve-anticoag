@@ -59,6 +59,14 @@ study = StudyDefinition(
             "category": {"ratios": {"M": 0.49, "F": 0.5, "U": 0.01}},
         }
     ),
+    age=patients.age_as_of(
+                "index_date",
+                return_expectations={
+                    "rate": "universal",
+                    "int": {"distribution": "population_ages"},
+                },
+            ),
+            
     ##age
     age_band=patients.categorised_as(
         {
