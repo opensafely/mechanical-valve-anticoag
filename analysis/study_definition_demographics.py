@@ -27,13 +27,7 @@ study = StudyDefinition(
             returning="binary_flag",
             return_expectations={"incidence": 0.05},
         ),
-        age=patients.age_as_of(
-            "index_date",
-            return_expectations={
-                "rate": "universal",
-                "int": {"distribution": "population_ages"},
-            },
-        ),
+    
     ),
     index_date="2021-04-01",
     ## Medication
