@@ -114,14 +114,7 @@ study = StudyDefinition(
             },
         },
     ),
-    # Patients in long-stay nursing and residential care
-    longres_dat=patients.with_these_clinical_events(
-        codelists.longres,
-        returning="date",
-        find_last_match_in_period=True,
-        on_or_before="index_date",
-        date_format="YYYY-MM-DD",
-    ),
+
     # Ethnicity
     eth2001=patients.with_these_clinical_events(
         codelists.eth2001,
