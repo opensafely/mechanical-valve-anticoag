@@ -18,8 +18,6 @@ study = StudyDefinition(
         """registered 
         AND
         (NOT has_died) 
-        AND
-        age>=16 AND age <= 120 
         """,
         registered=patients.registered_as_of(
             "index_date", return_expectations={"incidence": 0.9},
