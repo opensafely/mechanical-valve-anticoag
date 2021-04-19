@@ -38,7 +38,6 @@ study = StudyDefinition(
         ),
     ),
     index_date="2021-04-01",
-
     ## Medication
     doac=patients.with_these_medications(
         doac_codes,
@@ -52,17 +51,14 @@ study = StudyDefinition(
         returning="binary_flag",
         return_expectations={"incidence": 0.0001,},
     ),
-
     ##Placeholder for AF SNOMED - CTV3 code exists but we are making a snomed version https://codelists.opensafely.org/codelist/opensafely/atrial-fibrillation-clinical-finding/2020-07-09/
-
-    ##CTV3 Atrial Fibriallation     
+    ##CTV3 Atrial Fibriallation
     atrial_fib=patients.with_these_clinical_events(
         af_codes,
         on_or_before="index_date",
         returning="binary_flag",
-        return_expectations={"incidence":0.01,},
-        ),
-
+        return_expectations={"incidence": 0.01,},
+    ),
     ## Demographics
     ##sex
     sex=patients.sex(

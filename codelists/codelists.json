@@ -11,6 +11,12 @@
       "url": "https://codelists.opensafely.org/codelist/opensafely/mechanical-or-artificial-valves/0ee582f8/",
       "downloaded_at": "2021-04-19 10:43:44.846566Z",
       "sha": "349ab279046eddca4c4bc2d14664ea19e6c86a41"
+    },
+    "opensafely-atrial-fibrillation-clinical-finding.csv": {
+      "id": "opensafely/atrial-fibrillation-clinical-finding/2020-07-09",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/atrial-fibrillation-clinical-finding/2020-07-09/",
+      "downloaded_at": "2021-04-19 10:52:09.644373Z",
+      "sha": "edccc1a96570988b7e92a7a6e44cdee70a0ac179"
     }
   }
 }

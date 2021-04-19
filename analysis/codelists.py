@@ -18,7 +18,7 @@ mechanical_valve_codes = codelist_from_csv(
     column="code",
 )
 
-#This is placeholder and should be replaced with SNOMED list once imported
+# This is placeholder and should be replaced with SNOMED list once imported
 af_codes = codelist_from_csv(
     "codelists/opensafely-atrial-fibrillation-clinical-finding.csv",
     system="ctv3",
