@@ -35,4 +35,4 @@ actions:
     run: cohortextractor:latest generate_cohort --study-definition study_definition_demographics
     outputs:
       highly_sensitive:
-        cohort: output/input_*.csv
+        cohort: output/input_demographics.csv
