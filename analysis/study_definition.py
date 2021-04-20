@@ -73,7 +73,16 @@ study = StudyDefinition(
             ),
 
 
-   
+    ##practice
+    practice=patients.registered_practice_as_of(
+        "index_date",
+        returning="pseudo_id",
+        return_expectations={
+            "int": {"distribution": "normal", "mean": 25, "stddev": 5},
+            "incidence": 0.5,
+        },
+    ),
+    
     # stp is an NHS administration region based on geography
     stp=patients.registered_practice_as_of(
         "index_date",

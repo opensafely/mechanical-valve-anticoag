@@ -169,36 +169,5 @@ study = StudyDefinition(
         on_or_before="index_date",
         date_format="YYYY-MM-DD",
     ),
-    ##Organisation Demograhics
-    ##practice
-    practice=patients.registered_practice_as_of(
-        "index_date",
-        returning="pseudo_id",
-        return_expectations={
-            "int": {"distribution": "normal", "mean": 25, "stddev": 5},
-            "incidence": 0.5,
-        },
-    ),
-    # stp is an NHS administration region based on geography
-    stp=patients.registered_practice_as_of(
-        "index_date",
-        returning="stp_code",
-        return_expectations={
-            "rate": "universal",
-            "category": {
-                "ratios": {
-                    "STP1": 0.1,
-                    "STP2": 0.1,
-                    "STP3": 0.1,
-                    "STP4": 0.1,
-                    "STP5": 0.1,
-                    "STP6": 0.1,
-                    "STP7": 0.1,
-                    "STP8": 0.1,
-                    "STP9": 0.1,
-                    "STP10": 0.1,
-                }
-            },
-        },
-    ),
+    
 )
