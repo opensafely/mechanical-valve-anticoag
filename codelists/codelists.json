@@ -7,10 +7,46 @@
       "sha": "50f69d9c0bcb0e58aadb76fb4749d33f74f66253"
     },
     "opensafely-mechanical-or-artificial-valves.csv": {
-      "id": "opensafely/mechanical-or-artificial-valves/54ae5cab",
-      "url": "https://codelists.opensafely.org/codelist/opensafely/mechanical-or-artificial-valves/54ae5cab/",
-      "downloaded_at": "2021-04-06 16:04:29.342287Z",
-      "sha": "013c5d596ae7b9f15fb450c5e8d7acc557b3ebfe"
+      "id": "opensafely/mechanical-or-artificial-valves/0ee582f8",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/mechanical-or-artificial-valves/0ee582f8/",
+      "downloaded_at": "2021-04-19 10:43:44.846566Z",
+      "sha": "349ab279046eddca4c4bc2d14664ea19e6c86a41"
+    },
+    "opensafely-atrial-fibrillation-clinical-finding.csv": {
+      "id": "opensafely/atrial-fibrillation-clinical-finding/2020-07-09",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/atrial-fibrillation-clinical-finding/2020-07-09/",
+      "downloaded_at": "2021-04-19 10:52:09.644373Z",
+      "sha": "edccc1a96570988b7e92a7a6e44cdee70a0ac179"
+    },
+    "primis-covid19-vacc-uptake-eth2001.csv": {
+      "id": "primis-covid19-vacc-uptake/eth2001/v1",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/eth2001/v1/",
+      "downloaded_at": "2021-04-19 12:03:25.160960Z",
+      "sha": "36e4eacba898e6ec72da8ff66e8c673bfd9aa8e4"
+    },
+    "primis-covid19-vacc-uptake-non_eth2001.csv": {
+      "id": "primis-covid19-vacc-uptake/non_eth2001/v1",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/non_eth2001/v1/",
+      "downloaded_at": "2021-04-19 12:03:25.364458Z",
+      "sha": "b8581424b9305f70148f1bbccc0d3e4703847df7"
+    },
+    "primis-covid19-vacc-uptake-eth_notgiptref.csv": {
+      "id": "primis-covid19-vacc-uptake/eth_notgiptref/v1",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/eth_notgiptref/v1/",
+      "downloaded_at": "2021-04-19 12:03:25.523459Z",
+      "sha": "6245c85e4bd44c0c3aa573325cf55891efee45db"
+    },
+    "primis-covid19-vacc-uptake-eth_notstated.csv": {
+      "id": "primis-covid19-vacc-uptake/eth_notstated/v1",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/eth_notstated/v1/",
+      "downloaded_at": "2021-04-19 12:03:25.681961Z",
+      "sha": "a8997e1807a07d8f56e34ba3d0b95ee0082fec82"
+    },
+    "primis-covid19-vacc-uptake-eth_norecord.csv": {
+      "id": "primis-covid19-vacc-uptake/eth_norecord/v1",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/eth_norecord/v1/",
+      "downloaded_at": "2021-04-19 12:03:25.845959Z",
+      "sha": "ca003bb021a14e704a6e81c139536ef459673da4"
     }
   }
 }
