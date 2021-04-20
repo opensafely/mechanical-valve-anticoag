@@ -52,11 +52,27 @@ study = StudyDefinition(
    ),
     index_date="2021-04-01",
 
-      doac=patients.with_these_medications(
+    doac=patients.with_these_medications(
         doac_codes,
         between=["index_date", "last_day_of_month(index_date)"],
         return_expectations={"incidence": 0.2},
     ),
+
+    doac_code=patients.with_these_medications(
+        doac_codes,
+        between=["index_date", "last_day_of_month(index_date)"],
+        returning="code"
+        return_expectations={"incidence": 0.2},
+    ),
+
+    mechanical_valve_code =patients.with_these_clinical_events(
+                mechanical_valve_codes,
+                on_or_before="index_date",
+                returning="code",
+                return_expectations={"incidence": 0.01,},
+            ),
+
+
    
     # stp is an NHS administration region based on geography
     stp=patients.registered_practice_as_of(
