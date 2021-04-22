@@ -41,7 +41,7 @@ study = StudyDefinition(
         mechanical_valve_codes,
         on_or_before="index_date",
         returning="binary_flag",
-        return_expectations={"incidence": 0.0001,},
+        return_expectations={"incidence": 0.8,},
     ),
     ##Placeholder for AF SNOMED - CTV3 code exists but we are making a snomed version https://codelists.opensafely.org/codelist/opensafely/atrial-fibrillation-clinical-finding/2020-07-09/
     ##CTV3 Atrial Fibriallation
