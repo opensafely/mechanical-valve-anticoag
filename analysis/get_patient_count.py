@@ -26,7 +26,7 @@ for file in os.listdir('output'):
 
 
             doac_subset = df[df['doac']==1]
-            df.apply(lambda row: get_patient_valve_code(row, doac_patients_codes), axis=1)
+            doac_subset.apply(lambda row: get_patient_valve_code(row, doac_patients_codes), axis=1)
 
             
 unique_patients = len(np.unique(patients_list))
