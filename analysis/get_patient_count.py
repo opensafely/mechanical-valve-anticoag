@@ -14,7 +14,7 @@ for file in os.listdir('output'):
             df = pd.read_csv(os.path.join('output', file))
             
             patients = np.unique(df['patient_id'])
-            patients_list.append(patients)
+            patients_list.extend(patients)
 
 
             def get_patient_valve_code(row, output_dict):
