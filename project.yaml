@@ -19,6 +19,7 @@ actions:
         patient_count: output/patient_count.json
         valve_code_counts: output/patient_valve_codes.json
         doac_valve_code_counts: output/patient_doac_valve_codes.json
+        recent_doac_valve_code_counts: output/recent_patient_doac_valve_codes.json
 
   generate_study_population_demographics:
     run: cohortextractor:latest generate_cohort --study-definition study_definition_demographics
