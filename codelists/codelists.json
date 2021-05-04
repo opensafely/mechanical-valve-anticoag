@@ -7,10 +7,10 @@
       "sha": "50f69d9c0bcb0e58aadb76fb4749d33f74f66253"
     },
     "opensafely-mechanical-or-artificial-valves.csv": {
-      "id": "opensafely/mechanical-or-artificial-valves/0ee582f8",
-      "url": "https://codelists.opensafely.org/codelist/opensafely/mechanical-or-artificial-valves/0ee582f8/",
-      "downloaded_at": "2021-04-19 10:43:44.846566Z",
-      "sha": "349ab279046eddca4c4bc2d14664ea19e6c86a41"
+      "id": "opensafely/mechanical-or-artificial-valves/22149601",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/mechanical-or-artificial-valves/22149601/",
+      "downloaded_at": "2021-05-04 14:17:41.747711Z",
+      "sha": "b9b2aae43ed7ee86701c0cdd3125366a19f10de6"
     },
     "opensafely-atrial-fibrillation-clinical-finding.csv": {
       "id": "opensafely/atrial-fibrillation-clinical-finding/2020-07-09",
