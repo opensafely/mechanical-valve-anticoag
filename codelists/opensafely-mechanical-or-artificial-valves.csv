@@ -9,17 +9,11 @@ code,term
 232773001,Bjork-Shiley prosthetic replacement of mitral valve
 232923009,Mechanical prosthetic atrioventricular valve replacement
 232951000,Mechanical prosthetic truncal valve replacement
-233853009,Prosthetic valve endocarditis
-248694000,Prosthetic valve sound
-248695004,Opening click of prosthetic valve
-248696003,Closing click of prosthetic valve
-248697007,Prosthetic valve sound muffled
 257286007,Conduit with mechanical prosthetic valve
 275030001,Ball valve mitral valve replacement
 275031002,Disc valve mitral valve replacement
 275032009,Single leaflet mitral valve replacement
 275033004,Bileaflet mitral valve replacement
-275035006,Heart valve replacement - prosthesis
 275199000,Ball valve aortic valve replacement
 275200002,Disc valve aortic valve replacement
 275203000,Ball valve tricuspid valve replacement
@@ -39,25 +33,14 @@ code,term
 308675007,Single leaflet truncal valve replacement
 308676008,Bileaflet truncal valve replacement
 310820008,Tilting disc cardiac valve prosthesis
-36791000119109,History of tricuspid valve replacement
+33711000119109,History of mechanical heart valve replacement
 431339008,Mechanical prosthetic mitral valve replacement
 50733009,Replacement of mitral valve with prosthesis
 698545003,History of mechanical prosthetic mitral valve replacement
 699347000,Mechanical heart valve replacement
 701403006,Tilting-disk heart valve prosthesis
-703157002,Prosthetic mitral valve failure
-703159004,Prosthetic mitral valve failure requiring replacement
-703160009,Prosthetic mitral valve failure requiring revision
-703167007,Prosthetic mitral valve stenosis
-703168002,Prosthetic mitral valve stenosis and regurgitation
-703175001,Acute prosthetic mitral valve regurgitation
-703177009,Prosthetic mitral valve calcific stenosis
-703187008,Prosthetic pulmonary valve failure
-703188003,Prosthetic pulmonary valve failure requiring replacement
-703290008,Prosthetic pulmonary valve failure requiring revision
 736892002,Aortic bi-leaflet mechanical valve prosthesis
 736893007,Aortic tri-leaflet mechanical valve prosthesis
 736894001,Mitral bi-leaflet mechanical valve prosthesis
 860667004,Aortic bi-leaflet mechanical valve prosthesis with biologic-polymer aorta graft
-94461000119106,History of pulmonary valve replacement
 96271000119109,History of mechanical mitral valve replacement
