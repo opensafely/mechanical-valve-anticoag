@@ -29,7 +29,7 @@ study = StudyDefinition(
         ),
     
     ),
-    index_date="2021-04-01",
+    index_date="2021-04-30",
     ## Medication
     doac=patients.with_these_medications(
         doac_codes,
