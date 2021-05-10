@@ -29,11 +29,11 @@ study = StudyDefinition(
         ),
     
     ),
-    index_date="2021-04-30",
+    index_date="2021-05-01",
     ## Medication
     doac=patients.with_these_medications(
         doac_codes,
-        on_or_after="index_date - 3 months",
+        between=["index_date -  3 months", "index_date"]
         return_expectations={"incidence": 0.2},
     ),
     ## Mechanical Valve
