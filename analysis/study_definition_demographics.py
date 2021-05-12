@@ -33,7 +33,7 @@ study = StudyDefinition(
     ## Medication
     doac=patients.with_these_medications(
         doac_codes,
-        between=["index_date -  3 months", "index_date"]
+        between=["index_date -  3 months", "index_date"],
         return_expectations={"incidence": 0.2},
     ),
     ## Mechanical Valve
