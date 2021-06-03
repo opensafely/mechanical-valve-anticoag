@@ -6,48 +6,21 @@ expectations:
 actions:
 
   generate_study_population:
-    run: cohortextractor:latest generate_cohort --study-definition study_definition --index-date-range "2018-09-01 to 2021-04-01 by month" --output-dir=output
+    run: cohortextractor:latest generate_cohort --study-definition study_definition --index-date-range "2018-09-01 to 2021-05-01 by month" --output-dir=output
     outputs:
       highly_sensitive:
         cohort: output/input_*.csv
-
-  get_patient_count:
-    run: python:latest python analysis/get_patient_count.py
-    needs: [generate_study_population]
-    outputs:
-      moderately_sensitive:
-        patient_count: output/patient_count.json
-        valve_code_counts: output/patient_valve_codes.json
-        doac_valve_code_counts: output/patient_doac_valve_codes.json
-        recent_doac_valve_code_counts: output/recent_patient_doac_valve_codes.json
-
-  generate_study_population_demographics:
-    run: cohortextractor:latest generate_cohort --study-definition study_definition_demographics
-    outputs:
-      highly_sensitive:
-        cohort: output/input_demographics.csv
 
   generate_measures:
       run: cohortextractor:latest generate_measures --study-definition study_definition --output-dir=output
       needs: [generate_study_population]
       outputs:
         moderately_sensitive:
-          measure_csv: output/measure_*.csv
-
-
-  # generate_notebook:
-  #   run: jupyter:latest jupyter nbconvert /workspace/analysis/measures_notebook.ipynb --execute --to html --output-dir=/workspace/output --ExecutePreprocessor.timeout=86400 --no-input
-  #   needs: [generate_study_population, generate_measures]
-  #   outputs:
-  #     moderately_sensitive:
-  #       notebook: output/measures_notebook.html
-  #       measures_csv: output/measures_dropped.csv
-  #       csv: output/check.csv
-
+          measure_csv: output/measure_*_rate.csv
 
   generate_notebook:
     run: jupyter:latest jupyter nbconvert /workspace/analysis/notebook.ipynb --execute --to html --output-dir=/workspace/output --ExecutePreprocessor.timeout=86400 --no-input
-    needs: [generate_study_population, generate_study_population_demographics,generate_measures, get_patient_count]
+    needs: [generate_study_population, generate_measures]
     outputs:
       moderately_sensitive:
         notebook: output/notebook.html
