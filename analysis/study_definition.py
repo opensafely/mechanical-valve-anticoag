@@ -10,6 +10,8 @@ from codelists import *
 
 
 study = StudyDefinition(
+    index_date="2021-04-01",
+    
     # Configure the expectations framework
     default_expectations={
         "date": {"earliest": "2020-01-01", "latest": "today"},
@@ -34,56 +36,9 @@ study = StudyDefinition(
                 returning="binary_flag",
                 return_expectations={"incidence": 0.05},
             ),
-            age=patients.age_as_of(
-                "index_date",
-                return_expectations={
-                    "rate": "universal",
-                    "int": {"distribution": "population_ages"},
-                },
-            ),
-            mechanical_valve=patients.with_these_clinical_events(
-                mechanical_valve_codes,
-                on_or_before="index_date",
-                returning="binary_flag",
-                return_expectations={"incidence": 0.01,},
-            ),
-  
-
+           
    ),
-    index_date="2021-04-01",
-
-    doac=patients.with_these_medications(
-        doac_codes,
-        between=["index_date", "last_day_of_month(index_date)"],
-        return_expectations={"incidence": 0.2},
-    ),
-
-    doac_code=patients.with_these_medications(
-        doac_codes,
-        between=["index_date", "last_day_of_month(index_date)"],
-        returning="code",
-        return_expectations={"category": {
-            "ratios": {19506911000001105: 1}}, },
-    ),
-
-    mechanical_valve_code =patients.with_these_clinical_events(
-                mechanical_valve_codes,
-                on_or_before="index_date",
-                returning="code",
-                return_expectations={"category": {
-            "ratios": {174920003: 1}}, },
-            ),
-
-
-    ##practice
-    practice=patients.registered_practice_as_of(
-        "index_date",
-        returning="pseudo_id",
-        return_expectations={
-            "int": {"distribution": "normal", "mean": 25, "stddev": 5},
-            "incidence": 0.5,
-        },
-    ),
+    
 
     # stp is an NHS administration region based on geography
     stp=patients.registered_practice_as_of(
@@ -107,32 +62,183 @@ study = StudyDefinition(
             },
         },
     ),
+    
+    
+    
+    age=patients.age_as_of(
+                "index_date",
+                return_expectations={
+                    "rate": "universal",
+                    "int": {"distribution": "population_ages"},
+                },
+            ),
+    
+    age_band=patients.categorised_as(
+        {
+            "0": "DEFAULT",
+            "0-19": """ age >= 0 AND age < 20""",
+            "20-29": """ age >=  20 AND age < 30""",
+            "30-39": """ age >=  30 AND age < 40""",
+            "40-49": """ age >=  40 AND age < 50""",
+            "50-59": """ age >=  50 AND age < 60""",
+            "60-69": """ age >=  60 AND age < 70""",
+            "70-79": """ age >=  70 AND age < 80""",
+            "80+": """ age >=  80 AND age < 120""",
+        },
+        return_expectations={
+            "rate": "universal",
+            "category": {
+                "ratios": {
+                    "0": 0.001,
+                    "0-19": 0.124,
+                    "20-29": 0.125,
+                    "30-39": 0.125,
+                    "40-49": 0.125,
+                    "50-59": 0.125,
+                    "60-69": 0.125,
+                    "70-79": 0.125,
+                    "80+": 0.125,
+                }
+            },
+        },
+    ),
+    
+    imd=patients.address_as_of(
+        "index_date",
+        returning="index_of_multiple_deprivation",
+        round_to_nearest=100,
+        return_expectations={
+            "category": {
+                "ratios": {
+                    "1": 0.2,
+                    "6001": 0.2,
+                    "12001": 0.2,
+                    "18001": 0.2,
+                    "24001": 0.2,
+                }
+            },
+        },
+    ),
+    
+    sex=patients.sex(
+        return_expectations={
+            "rate": "universal",
+            "category": {"ratios": {"M": 0.49, "F": 0.5, "U": 0.01}},
+        }
+    ),
+    
+#     atrial_fib=patients.with_these_clinical_events(
+#         af_codes,
+#         on_or_before="index_date",
+#         returning="binary_flag",
+#         return_expectations={"incidence": 0.01,},
+#     ),
+    
+    
+    mechanical_valve=patients.with_these_clinical_events(
+                mechanical_valve_codes,
+                on_or_before="index_date",
+                returning="binary_flag",
+                return_expectations={"incidence": 0.01,},
+            ),
+    
+    mechanical_valve_code =patients.with_these_clinical_events(
+                mechanical_valve_codes,
+                on_or_before="index_date",
+                returning="code",
+                return_expectations={"category": {
+            "ratios": {174920003: 1}}, },
+            ),
+    
+    
+    doac=patients.with_these_medications(
+        doac_codes,
+        between=["index_date", "last_day_of_month(index_date)"],
+        return_expectations={"incidence": 0.2},
+    ),
+
+    doac_code=patients.with_these_medications(
+        doac_codes,
+        between=["index_date", "last_day_of_month(index_date)"],
+        returning="code",
+        return_expectations={"category": {
+            "ratios": {19506911000001105: 1}}, },
+    ),
+    
+    doac_3_months = patients.with_these_medications(
+        doac_codes,
+        between=["index_date - 2 months", "last_day_of_month(index_date)"],
+        return_expectations={"incidence": 0.2},
+    ),
+
 )
 
 measures = [
     Measure(
-        id="doac_rx_mechanical_valve",
+        id="doac_rx_mechanical_valve_rate",
+        numerator="doac",
+        denominator="population",
+        group_by="stp",
+    ),
+    
+    Measure(
+        id="doac_rx_mechanical_valve_3_month_rate",
+        numerator="doac_3_months",
+        denominator="population",
+        group_by="stp",
+    ),
+    
+    Measure(
+        id="doac_rx_mechanical_valve_3_month_sex_rate",
+        numerator="doac_3_months",
+        denominator="population",
+        group_by="sex",
+    ),
+    
+    Measure(
+        id="doac_rx_mechanical_valve_3_month_imd_rate",
+        numerator="doac_3_months",
+        denominator="population",
+        group_by="imd",
+    ),
+    
+#     Measure(
+#         id="doac_rx_mechanical_valve_3_month_af_rate",
+#         numerator="doac_3_months",
+#         denominator="population",
+#         group_by="atrial_fib",
+#     ),
+    
+    Measure(
+        id="doac_rx_mechanical_valve_3_month_ethnicity_rate",
+        numerator="doac_3_months",
+        denominator="population",
+        group_by="eth2001",
+    ),
+    
+    Measure(
+        id="doac_rx_mechanical_valve_3_month_age_rate",
+        numerator="doac_3_months",
+        denominator="population",
+        group_by="age_band",
+    ),
+    
+    Measure(
+        id="doac_rx_mechanical_valve_3_month_valve_code_rate",
+        numerator="doac_3_months",
+        denominator="population",
+        group_by="mechanical_valve_code",
+    ),
+    
+    Measure(
+        id="stp_rate",
         numerator="doac",
         denominator="population",
         group_by="stp",
     ),
 
     Measure(
-        id="practice",
-        numerator="doac",
-        denominator="population",
-        group_by="practice",
-    ),
-
-    Measure(
-        id="stp",
-        numerator="doac",
-        denominator="population",
-        group_by="stp",
-    ),
-
-    Measure(
-        id="doac_code",
+        id="doac_code_rate",
         numerator="doac",
         denominator="population",
         group_by="doac_code",
