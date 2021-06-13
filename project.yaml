@@ -38,4 +38,5 @@ actions:
       moderately_sensitive:
         notebook: output/notebook.html
         figures: output/measure_*.jpeg
+        csvs: output/current_doac_*.csv
        
