@@ -24,7 +24,7 @@ actions:
       highly_sensitive:
         cohort: output/input*.csv
         
-  join_ethnicity:
+  patient_count:
     run: python:latest python analysis/get_patient_count.py
     needs: [join_ethnicity]
     outputs:
