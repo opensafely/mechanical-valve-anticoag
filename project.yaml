@@ -23,6 +23,13 @@ actions:
     outputs:
       highly_sensitive:
         cohort: output/input*.csv
+        
+  patient_count:
+    run: python:latest python analysis/get_patient_count.py
+    needs: [join_ethnicity]
+    outputs:
+      highly_sensitive:
+        csv: output/patient_count.csv
 
   generate_measures:
       run: cohortextractor:latest generate_measures --study-definition study_definition --output-dir=output
@@ -38,5 +45,4 @@ actions:
       moderately_sensitive:
         notebook: output/notebook.html
         figures: output/measure_*.jpeg
-        csvs: output/current_doac_*.csv
        
