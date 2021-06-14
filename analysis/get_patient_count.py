@@ -2,13 +2,13 @@ import os
 import json
 import pandas as pd
 import numpy as np
-from collections import Counter
 
 patients_codes = {}
 doac_patients_codes = {}
-recent_doac_patients_codes = {}
+
 
 patients_list = []
+doac_patients_list = []
 for file in os.listdir('output'):
         
         if file.startswith('input_2'):
@@ -20,35 +20,17 @@ for file in os.listdir('output'):
             patients_list.extend(patients)
 
 
-            def get_patient_valve_code(row, output_dict):
-                patient = row['patient_id']
-                code = row['mechanical_valve_code']
-                if pd.notnull(code):
-                    output_dict[patient] = code
-            
-            df.apply(lambda row: get_patient_valve_code(row, patients_codes), axis=1)
-
-
             doac_subset = df[df['doac']==1]
-            doac_subset.apply(lambda row: get_patient_valve_code(row, doac_patients_codes), axis=1)
+            doac_patients = patients = np.unique(doac_subset['patient_id'])
+            doac_patients_list.extend(doac_patients)
 
-            # if last 3 months get separate count
-
-            if date in ['2021-04-01', '2021-03-01', '2021-02-01']:
-                doac_subset.apply(lambda row: get_patient_valve_code(row, recent_doac_patients_codes), axis=1)
 
             
 unique_patients = len(np.unique(patients_list))
-    
-with open('output/patient_count.json', 'w') as f:
-    json.dump({"num_patients": unique_patients}, f)
-    
-with open('output/patient_valve_codes.json', 'w') as f:
-    json.dump({"patients_codes": Counter(patients_codes.values())}, f)
-   
-with open('output/patient_doac_valve_codes.json', 'w') as f:
-    json.dump({"patients_codes": Counter(doac_patients_codes.values())}, f)
+unique_patients_doac = len(np.unique(doac_patients_list))
 
-with open('output/recent_patient_doac_valve_codes.json', 'w') as f:
-    json.dump({"patients_codes": Counter(recent_doac_patients_codes.values())}, f)
+count_df = pd.DataFrame([['mechanical_valve', unique_patients],['mechanical_valve_doac', unique_patients_doac]], columns=['group','count'])
+count_df.to_csv('output/patient_count.csv')
+    
+
 
