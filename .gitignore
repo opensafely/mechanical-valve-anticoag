@@ -3,7 +3,7 @@ model.log
 */input.csv
 __pycache__
 .python-version
-output/*
+./output/
 metadata/*
 *.ipynb_checkpoints
 *.DS_Store
