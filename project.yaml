@@ -28,7 +28,7 @@ actions:
     run: python:latest python analysis/get_patient_count.py
     needs: [join_ethnicity]
     outputs:
-      highly_sensitive:
+      moderately_sensitive:
         csv: output/patient_count.csv
 
   generate_measures:
