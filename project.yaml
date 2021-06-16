@@ -45,5 +45,6 @@ actions:
       moderately_sensitive:
         notebook: output/notebook.html
         figures: output/measure_*.jpeg
+        total_csv: output/doac_rate_total.csv
         csvs: output/current_doac_*.csv
        
