@@ -28,7 +28,7 @@ actions:
     run: python:latest python analysis/get_patient_count.py
     needs: [join_ethnicity]
     outputs:
-      highly_sensitive:
+      moderately_sensitive:
         csv: output/patient_count.csv
 
   generate_measures:
@@ -45,4 +45,6 @@ actions:
       moderately_sensitive:
         notebook: output/notebook.html
         figures: output/measure_*.jpeg
+        total_csv: output/doac_rate_total.csv
+        csvs: output/current_doac_*.csv
        
