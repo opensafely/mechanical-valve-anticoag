@@ -10,7 +10,7 @@ from codelists import *
 
 
 study = StudyDefinition(
-    index_date="2021-04-01",
+    index_date="2021-05-01",
     
     # Configure the expectations framework
     default_expectations={
