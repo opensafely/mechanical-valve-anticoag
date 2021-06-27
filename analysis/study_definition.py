@@ -7,10 +7,29 @@ from cohortextractor import (
 )
 from codelists import *
 
+index_date = index_date="2021-05-01"
+def make_variable(code):
+    return {
+        f"mechanical_valve_{code}": (
+            patients.with_these_clinical_events(
+                codelist([code], system="snomed"),
+                on_or_before="index_date",
+                returning="binary_flag",
+                return_expectations={"incidence": 0.01,},
+            )
+        )
+    }
+
+
+def loop_over_codes(code_list):
+    variables = {}
+    for code in code_list:
+        variables.update(make_variable(code))
+    return variables
 
 
 study = StudyDefinition(
-    index_date="2021-04-01",
+    index_date=index_date,
     
     # Configure the expectations framework
     default_expectations={
@@ -103,18 +122,30 @@ study = StudyDefinition(
         },
     ),
     
-    imd=patients.address_as_of(
-        "index_date",
-        returning="index_of_multiple_deprivation",
-        round_to_nearest=100,
+    imd=patients.categorised_as(
+        {
+            "0": "DEFAULT", 
+            "1": """index_of_multiple_deprivation >=1 AND index_of_multiple_deprivation < 32844*1/5""",
+            "2": """index_of_multiple_deprivation >= 32844*1/5 AND index_of_multiple_deprivation < 32844*2/5""",
+            "3": """index_of_multiple_deprivation >= 32844*2/5 AND index_of_multiple_deprivation < 32844*3/5""",
+            "4": """index_of_multiple_deprivation >= 32844*3/5 AND index_of_multiple_deprivation < 32844*4/5""",
+            "5": """index_of_multiple_deprivation >= 32844*4/5 AND index_of_multiple_deprivation < 32844""",
+        },
+        index_of_multiple_deprivation=patients.address_as_of(
+            index_date,
+            returning="index_of_multiple_deprivation",
+            round_to_nearest=100,
+        ),
         return_expectations={
+            "rate": "universal",
             "category": {
                 "ratios": {
-                    "1": 0.2,
-                    "6001": 0.2,
-                    "12001": 0.2,
-                    "18001": 0.2,
-                    "24001": 0.2,
+                    "0": 0.05,
+                    "1": 0.19,
+                    "2": 0.19,
+                    "3": 0.19,
+                    "4": 0.19,
+                    "5": 0.19,
                 }
             },
         },
@@ -134,7 +165,8 @@ study = StudyDefinition(
 #         return_expectations={"incidence": 0.01,},
 #     ),
     
-    
+    **loop_over_codes(mechanical_valve_codes),
+
     mechanical_valve=patients.with_these_clinical_events(
                 mechanical_valve_codes,
                 on_or_before="index_date",
@@ -142,13 +174,14 @@ study = StudyDefinition(
                 return_expectations={"incidence": 0.01,},
             ),
     
-    mechanical_valve_code =patients.with_these_clinical_events(
-                mechanical_valve_codes,
-                on_or_before="index_date",
-                returning="code",
-                return_expectations={"category": {
-            "ratios": {174920003: 1}}, },
-            ),
+    # mechanical_valve_code =patients.with_these_clinical_events(
+    #             mechanical_valve_codes,
+    #             on_or_before="index_date",
+    #             returning="code",
+    #             return_expectations={"category": {
+    #         "ratios": {174920003: 1}}, },
+    #         ),
+    
     
     
     doac=patients.with_these_medications(
@@ -208,6 +241,13 @@ measures = [
 #         denominator="population",
 #         group_by="atrial_fib",
 #     ),
+
+    Measure(
+        id="doac_rx_mechanical_valve_3_month_ethnicity_rate",
+        numerator="doac_3_months",
+        denominator="population",
+        group_by="imd",
+    ),
     
     Measure(
         id="doac_rx_mechanical_valve_3_month_ethnicity_rate",
