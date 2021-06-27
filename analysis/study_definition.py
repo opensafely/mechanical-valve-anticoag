@@ -7,10 +7,29 @@ from cohortextractor import (
 )
 from codelists import *
 
+index_date = index_date="2021-05-01"
+def make_variable(code):
+    return {
+        f"mechanical_valve_{code}": (
+            patients.with_these_clinical_events(
+                codelist([code], system="snomed"),
+                on_or_before="index_date",
+                returning="binary_flag",
+                return_expectations={"incidence": 0.01,},
+            )
+        )
+    }
+
+
+def loop_over_codes(code_list):
+    variables = {}
+    for code in code_list:
+        variables.update(make_variable(code))
+    return variables
 
 
 study = StudyDefinition(
-    index_date="2021-05-01",
+    index_date=index_date,
     
     # Configure the expectations framework
     default_expectations={
@@ -146,7 +165,8 @@ study = StudyDefinition(
 #         return_expectations={"incidence": 0.01,},
 #     ),
     
-    
+    **loop_over_codes(mechanical_valve_codes),
+
     mechanical_valve=patients.with_these_clinical_events(
                 mechanical_valve_codes,
                 on_or_before="index_date",
@@ -154,13 +174,13 @@ study = StudyDefinition(
                 return_expectations={"incidence": 0.01,},
             ),
     
-    mechanical_valve_code =patients.with_these_clinical_events(
-                mechanical_valve_codes,
-                on_or_before="index_date",
-                returning="code",
-                return_expectations={"category": {
-            "ratios": {174920003: 1}}, },
-            ),
+    # mechanical_valve_code =patients.with_these_clinical_events(
+    #             mechanical_valve_codes,
+    #             on_or_before="index_date",
+    #             returning="code",
+    #             return_expectations={"category": {
+    #         "ratios": {174920003: 1}}, },
+    #         ),
     
     
     
