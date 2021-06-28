@@ -20,9 +20,9 @@ mechanical_valve_codes = codelist_from_csv(
 
 # This is placeholder and should be replaced with SNOMED list once imported
 af_codes = codelist_from_csv(
-    "codelists/opensafely-atrial-fibrillation-clinical-finding.csv",
-    system="ctv3",
-    column="CTV3Code",
+    "codelists/nhsd-primary-care-domain-refsets-afib_cod.csv",
+    system="snomed",
+    column="code",
 )
 
 # Ethnicity codes
