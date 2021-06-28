@@ -196,6 +196,13 @@ measures = [
         denominator="population",
         group_by="stp",
     ),
+
+    Measure(
+        id="doac_rx_mechanical_valve_warfarin_rate",
+        numerator="doac",
+        denominator="population",
+        group_by="recent_warfarin",
+    ),
     
     Measure(
         id="doac_rx_mechanical_valve_3_month_rate",
