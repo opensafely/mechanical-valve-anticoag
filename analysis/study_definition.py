@@ -212,12 +212,12 @@ measures = [
         group_by="imd",
     ),
     
-#     Measure(
-#         id="doac_rx_mechanical_valve_3_month_af_rate",
-#         numerator="doac_3_months",
-#         denominator="population",
-#         group_by="atrial_fib",
-#     ),
+    Measure(
+        id="doac_rx_mechanical_valve_3_month_af_rate",
+        numerator="doac_3_months",
+        denominator="population",
+        group_by="atrial_fib",
+    ),
 
     Measure(
         id="doac_rx_mechanical_valve_3_month_ethnicity_rate",
