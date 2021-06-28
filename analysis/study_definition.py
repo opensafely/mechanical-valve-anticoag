@@ -1,35 +1,12 @@
 from cohortextractor import (
     StudyDefinition,
     Measure,
-    patients,
-    codelist,
-    codelist_from_csv,
+    patients
 )
 from codelists import *
 
-index_date = index_date="2021-05-01"
-def make_variable(code):
-    return {
-        f"mechanical_valve_{code}": (
-            patients.with_these_clinical_events(
-                codelist([code], system="snomed"),
-                on_or_before="index_date",
-                returning="binary_flag",
-                return_expectations={"incidence": 0.01,},
-            )
-        )
-    }
-
-
-def loop_over_codes(code_list):
-    variables = {}
-    for code in code_list:
-        variables.update(make_variable(code))
-    return variables
-
-
 study = StudyDefinition(
-    index_date=index_date,
+    index_date="2021-05-01",
     
     # Configure the expectations framework
     default_expectations={
@@ -121,6 +98,12 @@ study = StudyDefinition(
             },
         },
     ),
+
+    recent_warfarin=patients.with_these_medications(
+        warfarin_codes,
+        between=["index_date - 4 months", "last_day_of_month(index_date)"],
+        return_expectations={"incidence": 0.8},
+    ),
     
     imd=patients.categorised_as(
         {
@@ -132,7 +115,7 @@ study = StudyDefinition(
             "5": """index_of_multiple_deprivation >= 32844*4/5 AND index_of_multiple_deprivation < 32844""",
         },
         index_of_multiple_deprivation=patients.address_as_of(
-            index_date,
+            "index_date",
             returning="index_of_multiple_deprivation",
             round_to_nearest=100,
         ),
@@ -158,14 +141,14 @@ study = StudyDefinition(
         }
     ),
     
-#     atrial_fib=patients.with_these_clinical_events(
-#         af_codes,
-#         on_or_before="index_date",
-#         returning="binary_flag",
-#         return_expectations={"incidence": 0.01,},
-#     ),
+    atrial_fib=patients.with_these_clinical_events(
+        af_codes,
+        on_or_before="index_date",
+        returning="binary_flag",
+        return_expectations={"incidence": 0.01,},
+    ),
     
-    **loop_over_codes(mechanical_valve_codes),
+    
 
     mechanical_valve=patients.with_these_clinical_events(
                 mechanical_valve_codes,
@@ -174,13 +157,13 @@ study = StudyDefinition(
                 return_expectations={"incidence": 0.01,},
             ),
     
-    # mechanical_valve_code =patients.with_these_clinical_events(
-    #             mechanical_valve_codes,
-    #             on_or_before="index_date",
-    #             returning="code",
-    #             return_expectations={"category": {
-    #         "ratios": {174920003: 1}}, },
-    #         ),
+    mechanical_valve_code =patients.with_these_clinical_events(
+                mechanical_valve_codes,
+                on_or_before="index_date",
+                returning="code",
+                return_expectations={"category": {
+            "ratios": {174920003: 1}}, },
+            ),
     
     
     
@@ -235,12 +218,12 @@ measures = [
         group_by="imd",
     ),
     
-#     Measure(
-#         id="doac_rx_mechanical_valve_3_month_af_rate",
-#         numerator="doac_3_months",
-#         denominator="population",
-#         group_by="atrial_fib",
-#     ),
+    Measure(
+        id="doac_rx_mechanical_valve_3_month_af_rate",
+        numerator="doac_3_months",
+        denominator="population",
+        group_by="atrial_fib",
+    ),
 
     Measure(
         id="doac_rx_mechanical_valve_3_month_ethnicity_rate",

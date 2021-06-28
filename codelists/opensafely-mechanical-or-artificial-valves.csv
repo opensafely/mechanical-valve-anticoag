@@ -3,7 +3,6 @@ code,term
 174920003,Prosthetic mitral valve replacement (& [Bjork Shiley] or [Carpentier Edwards])
 174929002,Mechanical prosthetic aortic valve replacement
 174937005,Mechanical prosthetic tricuspid valve replacement
-174943007,Pulmonary valve: [plastic repair] or [replacement]
 174946004,Mechanical prosthetic pulmonary valve replacement
 174954002,Prosthetic heart valve replacement: [NEC] or [Starr Edwards]
 232773001,Bjork-Shiley prosthetic replacement of mitral valve
@@ -16,6 +15,8 @@ code,term
 275033004,Bileaflet mitral valve replacement
 275199000,Ball valve aortic valve replacement
 275200002,Disc valve aortic valve replacement
+275201003,Single leaflet aortic valve replacement
+275202005,Bileaflet aortic valve replacement
 275203000,Ball valve tricuspid valve replacement
 275204006,Disc valve tricuspid valve replacement
 275205007,Single leaflet tricuspid valve replacement
@@ -32,13 +33,10 @@ code,term
 308674006,Disc valve truncal valve replacement
 308675007,Single leaflet truncal valve replacement
 308676008,Bileaflet truncal valve replacement
-310820008,Tilting disc cardiac valve prosthesis
 33711000119109,History of mechanical heart valve replacement
 431339008,Mechanical prosthetic mitral valve replacement
-50733009,Replacement of mitral valve with prosthesis
 698545003,History of mechanical prosthetic mitral valve replacement
 699347000,Mechanical heart valve replacement
-701403006,Tilting-disk heart valve prosthesis
 736892002,Aortic bi-leaflet mechanical valve prosthesis
 736893007,Aortic tri-leaflet mechanical valve prosthesis
 736894001,Mitral bi-leaflet mechanical valve prosthesis
