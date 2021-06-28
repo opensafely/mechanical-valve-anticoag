@@ -115,7 +115,7 @@ study = StudyDefinition(
             "5": """index_of_multiple_deprivation >= 32844*4/5 AND index_of_multiple_deprivation < 32844""",
         },
         index_of_multiple_deprivation=patients.address_as_of(
-            index_date,
+            "index_date",
             returning="index_of_multiple_deprivation",
             round_to_nearest=100,
         ),
