@@ -98,6 +98,12 @@ study = StudyDefinition(
             },
         },
     ),
+
+    recent_warfarin=patients.with_these_medications(
+        warfarin_codes,
+        between=["index_date - 4 months", "last_day_of_month(index_date)"],
+        return_expectations={"incidence": 0.8},
+    ),
     
     imd=patients.categorised_as(
         {
