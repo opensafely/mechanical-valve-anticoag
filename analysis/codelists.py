@@ -1,6 +1,11 @@
 from cohortextractor import (
-    codelist,
     codelist_from_csv,
+)
+
+warfarin_contraindicated_codes = codelist_from_csv(
+    "codelists/warfarin_contraindicated.csv",
+    system="snomed",
+    column="code",
 )
 
 warfarin_codes = codelist_from_csv(

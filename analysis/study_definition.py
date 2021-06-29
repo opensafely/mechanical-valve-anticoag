@@ -148,6 +148,12 @@ study = StudyDefinition(
         return_expectations={"incidence": 0.01,},
     ),
     
+    warfarin_contraindicated=patients.with_these_clinical_events(
+        warfarin_contraindicated_codes,
+        on_or_before="index_date",
+        returning="binary_flag",
+        return_expectations={"incidence": 0.01,},
+    ),
     
 
     mechanical_valve=patients.with_these_clinical_events(
@@ -202,6 +208,13 @@ measures = [
         numerator="doac",
         denominator="population",
         group_by="recent_warfarin",
+    ),
+
+    Measure(
+        id="doac_rx_mechanical_valve_warfarin__contraindicated_rate",
+        numerator="doac",
+        denominator="population",
+        group_by="warfarin_contraindicated",
     ),
     
     Measure(
