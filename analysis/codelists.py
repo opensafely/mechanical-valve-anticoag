@@ -2,18 +2,6 @@ from cohortextractor import (
     codelist_from_csv,
 )
 
-warfarin_contraindicated_codes = codelist_from_csv(
-    "analysis/warfarin_contraindicated.csv",
-    system="snomed",
-    column="code",
-)
-
-warfarin_codes = codelist_from_csv(
-    "codelists/opensafely-warfarin.csv",
-    system="snomed",
-    column="id",
-)
-
 doac_codes = codelist_from_csv(
     "codelists/opensafely-direct-acting-oral-anticoagulants-doac.csv",
     system="snomed",
