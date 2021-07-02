@@ -98,12 +98,6 @@ study = StudyDefinition(
             },
         },
     ),
-
-    recent_warfarin=patients.with_these_medications(
-        warfarin_codes,
-        between=["index_date - 4 months", "last_day_of_month(index_date)"],
-        return_expectations={"incidence": 0.8},
-    ),
     
     imd=patients.categorised_as(
         {
@@ -141,13 +135,12 @@ study = StudyDefinition(
         }
     ),
     
-    atrial_fib=patients.with_these_clinical_events(
-        af_codes,
-        on_or_before="index_date",
-        returning="binary_flag",
-        return_expectations={"incidence": 0.01,},
-    ),
-    
+    # atrial_fib=patients.with_these_clinical_events(
+    #     af_codes,
+    #     on_or_before="index_date",
+    #     returning="binary_flag",
+    #     return_expectations={"incidence": 0.01,},
+    # ),
     
 
     mechanical_valve=patients.with_these_clinical_events(
@@ -196,7 +189,8 @@ measures = [
         denominator="population",
         group_by="stp",
     ),
-    
+
+
     Measure(
         id="doac_rx_mechanical_valve_3_month_rate",
         numerator="doac_3_months",
@@ -218,12 +212,12 @@ measures = [
         group_by="imd",
     ),
     
-    Measure(
-        id="doac_rx_mechanical_valve_3_month_af_rate",
-        numerator="doac_3_months",
-        denominator="population",
-        group_by="atrial_fib",
-    ),
+    # Measure(
+    #     id="doac_rx_mechanical_valve_3_month_af_rate",
+    #     numerator="doac_3_months",
+    #     denominator="population",
+    #     group_by="atrial_fib",
+    # ),
 
     Measure(
         id="doac_rx_mechanical_valve_3_month_ethnicity_rate",
