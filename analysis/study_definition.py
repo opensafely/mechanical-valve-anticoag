@@ -135,12 +135,12 @@ study = StudyDefinition(
         }
     ),
     
-    # atrial_fib=patients.with_these_clinical_events(
-    #     af_codes,
-    #     on_or_before="index_date",
-    #     returning="binary_flag",
-    #     return_expectations={"incidence": 0.01,},
-    # ),
+    atrial_fib=patients.with_these_clinical_events(
+        af_codes,
+        on_or_before="index_date",
+        returning="binary_flag",
+        return_expectations={"incidence": 0.01,},
+    ),
     
 
     mechanical_valve=patients.with_these_clinical_events(
@@ -212,12 +212,12 @@ measures = [
         group_by="imd",
     ),
     
-    # Measure(
-    #     id="doac_rx_mechanical_valve_3_month_af_rate",
-    #     numerator="doac_3_months",
-    #     denominator="population",
-    #     group_by="atrial_fib",
-    # ),
+    Measure(
+        id="doac_rx_mechanical_valve_3_month_af_rate",
+        numerator="doac_3_months",
+        denominator="population",
+        group_by="atrial_fib",
+    ),
 
     Measure(
         id="doac_rx_mechanical_valve_3_month_ethnicity_rate",
