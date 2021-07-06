@@ -65,4 +65,12 @@ actions:
         figures: output/measure_*.jpeg
         total_csv: output/doac_rate_total.csv
         csvs: output/current_doac_*.csv
-       
+  
+  combine:
+      run: python:latest python analysis/combined_analysis.py
+      outputs:
+        moderately_sensitive:
+          measure_csv: released_outputs/combined_rate.csv
+          count: released_outputs/count.jpeg
+          rate: released_outputs/rate.jpeg
+
