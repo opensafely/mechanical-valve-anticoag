@@ -219,14 +219,14 @@ measures = [
         group_by="atrial_fib",
     ),
 
+
     Measure(
         id="doac_rx_mechanical_valve_3_month_ethnicity_rate",
         numerator="doac_3_months",
         denominator="population",
-        group_by="imd",
+        group_by="eth2001",
     ),
-
-
+    
     Measure(
         id="doac_rx_mechanical_valve_3_month_age_rate",
         numerator="doac_3_months",
