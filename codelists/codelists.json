@@ -7,10 +7,10 @@
       "sha": "50f69d9c0bcb0e58aadb76fb4749d33f74f66253"
     },
     "opensafely-mechanical-or-artificial-valves.csv": {
-      "id": "opensafely/mechanical-or-artificial-valves/72fdabd8",
-      "url": "https://codelists.opensafely.org/codelist/opensafely/mechanical-or-artificial-valves/72fdabd8/",
-      "downloaded_at": "2021-06-28 13:20:19.454614Z",
-      "sha": "97af3bf07c1600c8eec6c4f48e18a6ea37b72306"
+      "id": "opensafely/mechanical-or-artificial-valves/18c42b4d",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/mechanical-or-artificial-valves/18c42b4d/",
+      "downloaded_at": "2021-07-08 08:29:29.685885Z",
+      "sha": "173b7f7c6f301b2801299fc9e67ebfc4a4c721f3"
     },
     "nhsd-primary-care-domain-refsets-afib_cod.csv": {
       "id": "nhsd-primary-care-domain-refsets/afib_cod/20200812",
