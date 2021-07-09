@@ -175,14 +175,14 @@ measures = [
 
     Measure(
         id="doac_rx_mechanical_valve_3_month_rate",
-        numerator="doac_3_months_forward",
+        numerator="doac_3_months",
         denominator="population",
         group_by="population",
     ),
 
     Measure(
         id="doac_rx_mechanical_valve_3_month_forward_rate",
-        numerator="doac_3_months",
+        numerator="doac_3_months_forward",
         denominator="population",
         group_by="population",
     ),
