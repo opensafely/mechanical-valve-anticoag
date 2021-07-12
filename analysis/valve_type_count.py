@@ -2,7 +2,7 @@ import pandas as pd
 import json
 
 start_df = pd.read_csv('output/input_valve_replacement_2018-01-01.csv')
-end_df = pd.read_csv('output/input_valve_replacement_2018-21-31.csv')
+end_df = pd.read_csv('output/input_valve_replacement_2018-12-31.csv')
 
 aortic_valve_codes = [174929002, 275199000, 275200002, 275201003, 275202005, 736892002, 736893007, 860667004, 125411000119107] 
 
