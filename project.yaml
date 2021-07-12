@@ -27,7 +27,7 @@ actions:
     run: python:latest python analysis/valve_type_count.py
     needs: [generate_study_population_valve_replacement_start, generate_study_population_valve_replacement_end]
     outputs:
-      highly_sensitive:
+      moderately_sensitive:
         cohort: output/aortic_valve_count.json
 
   generate_study_population:
