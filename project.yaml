@@ -43,6 +43,13 @@ actions:
     outputs:
       highly_sensitive:
         cohort: output/in*.csv
+
+  mean_age:
+    run: python:latest python analysis/mean_age.py
+    needs: [join_ethnicity]
+    outputs:
+      moderately_sensitive:
+        cohort: output/mean_age.json
         
   patient_count:
     run: python:latest python analysis/get_patient_count.py
