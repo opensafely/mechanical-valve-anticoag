@@ -76,20 +76,20 @@ actions:
         csvs: output/current_doac_*.csv
   
   # # to be run locally
-  # combine:
-  #     run: python:latest python analysis/combined_analysis.py
-  #     outputs:
-  #       moderately_sensitive:
-  #         measure_csv: released_outputs/combined_rate.csv
-  #         count: released_outputs/count.jpeg
-  #         count_with_mean: released_outputs/count_with_mean.jpeg
-  #         rate: released_outputs/rate.jpeg
+  combine:
+      run: python:latest python analysis/combined_analysis.py
+      outputs:
+        moderately_sensitive:
+          measure_csv: released_outputs/combined_rate.csv
+          count: released_outputs/count.jpeg
+          count_with_mean: released_outputs/count_with_mean.jpeg
+          rate: released_outputs/rate.jpeg
 
   # # to be run locally
-  # generate_report_notebook:
-  #     run: jupyter:latest jupyter nbconvert /workspace/analysis/report_notebook.ipynb --execute --to html --output-dir=/workspace/released_outputs --ExecutePreprocessor.timeout=86400 --no-input
-  #     needs: [combine]
-  #     outputs:
-  #       moderately_sensitive:
-  #         notebook: released_outputs/report_notebook.html
+  generate_report_notebook:
+      run: jupyter:latest jupyter nbconvert /workspace/analysis/report_notebook.ipynb --execute --to html --output-dir=/workspace/released_outputs --ExecutePreprocessor.timeout=86400 --no-input
+      needs: [combine]
+      outputs:
+        moderately_sensitive:
+          notebook: released_outputs/report_notebook.html
           
