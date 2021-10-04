@@ -11,32 +11,12 @@ actions:
       highly_sensitive:
         cohort: output/input_ethnicity.csv
       
-  generate_study_population_valve_replacement_start:
-    run: cohortextractor:latest generate_cohort --study-definition study_definition_valve_replacement --index-date-range "2018-01-01 to 2018-01-01 by month" --output-dir=output
-    outputs:
-      highly_sensitive:
-        cohort: output/input_valve_replacement_*.csv
-
-  generate_study_population_valve_replacement_end:
-    run: cohortextractor:latest generate_cohort --study-definition study_definition_valve_replacement --index-date-range "2018-12-31 to 2018-12-31 by month" --output-dir=output
-    outputs:
-      highly_sensitive:
-        cohort: output/input_valve_replacement*.csv
-  
-  aortic_valve_count:
-    run: python:latest python analysis/valve_type_count.py
-    needs: [generate_study_population_valve_replacement_start, generate_study_population_valve_replacement_end]
-    outputs:
-      moderately_sensitive:
-        cohort: output/aortic_valve_count.json
-
   generate_study_population:
     run: cohortextractor:latest generate_cohort --study-definition study_definition --index-date-range "2019-09-01 to 2021-05-01 by month" --output-dir=output
     outputs:
       highly_sensitive:
         cohort: output/input*.csv
-  
-        
+    
   join_ethnicity:
     run: python:latest python analysis/join_ethnicity.py
     needs: [generate_study_population, generate_study_population_ethnicity]
@@ -44,13 +24,6 @@ actions:
       highly_sensitive:
         cohort: output/in*.csv
 
-  mean_age:
-    run: python:latest python analysis/mean_age.py
-    needs: [join_ethnicity]
-    outputs:
-      moderately_sensitive:
-        cohort: output/mean_age.json
-        
   patient_count:
     run: python:latest python analysis/get_patient_count.py
     needs: [join_ethnicity]
