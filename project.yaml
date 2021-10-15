@@ -12,7 +12,7 @@ actions:
         cohort: output/input_ethnicity.csv
       
   generate_study_population:
-    run: cohortextractor:latest generate_cohort --study-definition study_definition --index-date-range "2019-09-01 to 2021-08-01 by month" --output-dir=output --skip-existing
+    run: cohortextractor:latest generate_cohort --study-definition study_definition --index-date-range "2019-09-01 to 2021-09-01 by month" --output-dir=output --skip-existing
     outputs:
       highly_sensitive:
         cohort: output/input*.csv
