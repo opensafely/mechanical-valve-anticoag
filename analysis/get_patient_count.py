@@ -31,7 +31,7 @@ dates = [
     "input_2021-06-01.csv",
     "input_2021-07-01.csv",
     "input_2021-08-01.csv",
-    "input_2021-09-01.csv",
+    "input_2021-09-01.csv"
 
 ]
 
@@ -41,7 +41,6 @@ for file in os.listdir('output'):
         
         if file in dates:
             date = file.split('_')[-1][:-4]
-
             df = pd.read_csv(os.path.join('output', file))
             
             patients = np.unique(df['patient_id'])

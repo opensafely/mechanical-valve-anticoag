@@ -35,7 +35,6 @@ study = StudyDefinition(
             ),
            
    ),
-    
 
     age=patients.age_as_of(
                 "index_date",
@@ -161,7 +160,7 @@ study = StudyDefinition(
         between=["index_date", "index_date + 3 months" ],
         return_expectations={"incidence": 0.2},
     ),
-    
+
 
 )
 
@@ -208,7 +207,7 @@ measures = [
         denominator="population",
         group_by="atrial_fib",
     ),
-    
+
     Measure(
         id="doac_rx_mechanical_valve_3_month_ethnicity_rate",
         numerator="doac_3_months",
@@ -229,6 +228,7 @@ measures = [
         denominator="population",
         group_by="mechanical_valve_code",
     ),
+
 
     Measure(
         id="doac_code_rate",
