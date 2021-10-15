@@ -8,15 +8,14 @@ doac_codes = codelist_from_csv(
     column="id",
 )
 
-# https://github.com/opensafely/codelist-development/issues/91
-# The following is a placeholder with a DRAFT codelist but should be replaced by above issue
+# Metal Valve https://github.com/opensafely/codelist-development/issues/91
 mechanical_valve_codes = codelist_from_csv(
     "codelists/opensafely-mechanical-or-artificial-valves.csv",
     system="snomed",
     column="code",
 )
 
-# This is placeholder and should be replaced with SNOMED list once imported
+# NHSD AF list
 af_codes = codelist_from_csv(
     "codelists/nhsd-primary-care-domain-refsets-afib_cod.csv",
     system="snomed",

@@ -9,7 +9,9 @@
     "opensafely-mechanical-or-artificial-valves.csv": {
       "id": "opensafely/mechanical-or-artificial-valves/18c42b4d",
       "url": "https://codelists.opensafely.org/codelist/opensafely/mechanical-or-artificial-valves/18c42b4d/",
-      "downloaded_at": "2021-07-08 08:29:29.685885Z",
+
+      "downloaded_at": "2021-07-08 07:56:25.638774Z",
+
       "sha": "173b7f7c6f301b2801299fc9e67ebfc4a4c721f3"
     },
     "nhsd-primary-care-domain-refsets-afib_cod.csv": {

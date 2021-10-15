@@ -28,6 +28,10 @@ dates = [
     "input_2021-03-01.csv",
     "input_2021-04-01.csv",
     "input_2021-05-01.csv",
+    "input_2021-06-01.csv",
+    "input_2021-07-01.csv",
+    "input_2021-08-01.csv",
+    "input_2021-09-01.csv"
 
 ]
 

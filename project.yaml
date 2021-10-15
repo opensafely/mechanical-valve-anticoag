@@ -10,13 +10,13 @@ actions:
     outputs:
       highly_sensitive:
         cohort: output/input_ethnicity.csv
-        
+
   generate_study_population:
-    run: cohortextractor:latest generate_cohort --study-definition study_definition --index-date-range "2019-09-01 to 2021-05-01 by month" --output-dir=output
+    run: cohortextractor:latest generate_cohort --study-definition study_definition --index-date-range "2019-09-01 to 2021-09-01 by month" --output-dir=output --skip-existing
     outputs:
       highly_sensitive:
         cohort: output/input*.csv
-  
+
     
   join_ethnicity:
     run: python:latest python analysis/join_ethnicity.py
@@ -25,13 +25,6 @@ actions:
       highly_sensitive:
         cohort: output/in*.csv
 
-  mean_age:
-    run: python:latest python analysis/mean_age.py
-    needs: [join_ethnicity]
-    outputs:
-      moderately_sensitive:
-        cohort: output/mean_age.json
-        
   patient_count:
     run: python:latest python analysis/get_patient_count.py
     needs: [join_ethnicity]
@@ -55,4 +48,22 @@ actions:
         figures: output/measure_*.jpeg
         total_csv: output/doac_rate_total.csv
         csvs: output/current_doac_*.csv
-       
+  
+  # # to be run locally
+  combine:
+      run: python:latest python analysis/combined_analysis.py
+      outputs:
+        moderately_sensitive:
+          measure_csv: released_outputs/combined_rate.csv
+          count: released_outputs/count.jpeg
+          count_with_mean: released_outputs/count_with_mean.jpeg
+          rate: released_outputs/rate.jpeg
+
+  # # to be run locally
+  generate_report_notebook:
+      run: jupyter:latest jupyter nbconvert /workspace/analysis/report_notebook.ipynb --execute --to html --output-dir=/workspace/released_outputs --ExecutePreprocessor.timeout=86400 --no-input
+      needs: [combine]
+      outputs:
+        moderately_sensitive:
+          notebook: released_outputs/report_notebook.html
+          

@@ -1,8 +1,6 @@
-# {{project_name}}
+# Potentially inappropriate prescribing of DOACs to people with mechanical heart valves: a federated analysis of 57.9 million patients’ primary care records in situ using OpenSAFELY
 
-This is the code and configuration for {{project_name}}
-
-* The paper is [here]()
+* The preprint is available on medRxiv [here](https://www.medrxiv.org/content/10.1101/2021.07.27.21261136v1)
 * Raw model outputs, including charts, crosstabs, etc, are in `released_outputs/`
 * If you are interested in how we defined our variables, take a look at the [study definition](analysis/study_definition.py); this is written in `python`, but non-programmers should be able to understand what is going on there
 * If you are interested in how we defined our code lists, look in the [codelists folder](./codelists/).

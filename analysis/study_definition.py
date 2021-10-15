@@ -6,6 +6,7 @@ from cohortextractor import (
 from codelists import *
 
 study = StudyDefinition(
+    
     index_date="2021-05-01",
     
     # Configure the expectations framework
@@ -34,9 +35,7 @@ study = StudyDefinition(
             ),
            
    ),
-    
-    
-    
+
     age=patients.age_as_of(
                 "index_date",
                 return_expectations={
@@ -162,6 +161,7 @@ study = StudyDefinition(
         return_expectations={"incidence": 0.2},
     ),
 
+
 )
 
 measures = [
@@ -208,7 +208,6 @@ measures = [
         group_by="atrial_fib",
     ),
 
-
     Measure(
         id="doac_rx_mechanical_valve_3_month_ethnicity_rate",
         numerator="doac_3_months",
@@ -229,15 +228,14 @@ measures = [
         denominator="population",
         group_by="mechanical_valve_code",
     ),
-    
+
+
     Measure(
         id="doac_code_rate",
         numerator="doac",
         denominator="population",
         group_by="doac_code",
     ),
-
-   
 
    
 ]
