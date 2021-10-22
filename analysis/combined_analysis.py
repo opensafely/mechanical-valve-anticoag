@@ -34,6 +34,12 @@ dates = [
 
 emis = pd.read_csv('released_outputs/EMIS/doac_rate_total.csv', usecols=['population', 'doac', 'date'])
 tpp = pd.read_csv('released_outputs/TPP/doac_rate_total.csv', usecols=['population', 'doac', 'date'])
+emis_recent = pd.read_csv('released_outputs/EMIS/doac_rate_total_recent.csv', usecols=['population', 'doac', 'date'])
+tpp_recent = pd.read_csv('released_outputs/TPP/doac_rate_total_recent.csv', usecols=['population', 'doac', 'date'])
+
+emis = pd.concat([emis, emis_recent], axis=0)
+tpp = pd.concat([tpp, tpp_recent], axis=0)
+
 tpp = tpp[tpp['date'].isin(dates)]
 emis = emis[emis['date'].isin(dates)]
 
