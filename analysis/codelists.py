@@ -1,4 +1,5 @@
 from cohortextractor import (
+    codelist,
     codelist_from_csv,
 )
 
@@ -57,3 +58,5 @@ eth_norecord = codelist_from_csv(
     system="snomed",
     column="code",
 )
+
+monitoring_codes = codelist(["309901000000107"], system="snomed")
