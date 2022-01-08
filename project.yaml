@@ -1,10 +1,9 @@
-version: '3.0'
+version: "3.0"
 
 expectations:
   population_size: 15000
 
 actions:
-
   generate_study_population_ethnicity:
     run: cohortextractor:latest generate_cohort --study-definition study_definition_ethnicity --output-dir=output
     outputs:
@@ -12,12 +11,12 @@ actions:
         cohort: output/input_ethnicity.csv
 
   generate_study_population:
-    run: cohortextractor:latest generate_cohort --study-definition study_definition --index-date-range "2019-09-01 to 2021-09-01 by month" --output-dir=output --skip-existing
+    run: cohortextractor:latest generate_cohort --study-definition study_definition --index-date-range "2019-01-01 to 2021-12-01 by month" --output-dir=output --skip-existing
     outputs:
       highly_sensitive:
         cohort: output/input*.csv
 
-    
+
   join_ethnicity:
     run: python:latest python analysis/join_ethnicity.py
     needs: [generate_study_population, generate_study_population_ethnicity]
@@ -36,11 +35,11 @@ actions:
 
 
   generate_measures:
-      run: cohortextractor:latest generate_measures --study-definition study_definition --output-dir=output
-      needs: [join_ethnicity]
-      outputs:
-        moderately_sensitive:
-          measure_csv: output/measure_*_rate.csv
+    run: cohortextractor:latest generate_measures --study-definition study_definition --output-dir=output
+    needs: [join_ethnicity]
+    outputs:
+      moderately_sensitive:
+        measure_csv: output/measure_*_rate.csv
 
   generate_notebook:
     run: jupyter:latest jupyter nbconvert /workspace/analysis/notebook.ipynb --execute --to html --output-dir=/workspace/output --ExecutePreprocessor.timeout=86400 --no-input
@@ -51,29 +50,28 @@ actions:
         figures: output/measure_*.jpeg
         total_csv: output/doac_rate_total.csv
         csvs: output/current_doac_*.csv
-  
+
   recent_data:
     run: python:latest python analysis/recent_data.py
     needs: [generate_notebook]
     outputs:
       moderately_sensitive:
         csv: output/doac_rate_total_recent.csv
-  
+
   # # to be run locally
   combine:
-      run: python:latest python analysis/combined_analysis.py
-      outputs:
-        moderately_sensitive:
-          measure_csv: released_outputs/combined_rate.csv
-          count: released_outputs/count.jpeg
-          count_with_mean: released_outputs/count_with_mean.jpeg
-          rate: released_outputs/rate.jpeg
+    run: python:latest python analysis/combined_analysis.py
+    outputs:
+      moderately_sensitive:
+        measure_csv: released_outputs/combined_rate.csv
+        count: released_outputs/count.jpeg
+        count_with_mean: released_outputs/count_with_mean.jpeg
+        rate: released_outputs/rate.jpeg
 
   # # to be run locally
   generate_report_notebook:
-      run: jupyter:latest jupyter nbconvert /workspace/analysis/report_notebook.ipynb --execute --to html --output-dir=/workspace/released_outputs --ExecutePreprocessor.timeout=86400 --no-input
-      needs: [combine]
-      outputs:
-        moderately_sensitive:
-          notebook: released_outputs/report_notebook.html
-          
+    run: jupyter:latest jupyter nbconvert /workspace/analysis/report_notebook.ipynb --execute --to html --output-dir=/workspace/released_outputs --ExecutePreprocessor.timeout=86400 --no-input
+    needs: [combine]
+    outputs:
+      moderately_sensitive:
+        notebook: released_outputs/report_notebook.html

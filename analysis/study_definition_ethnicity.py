@@ -9,7 +9,7 @@ from cohortextractor import (
 from datetime import date
 
 
-end_date = "2021-09-01"
+end_date = "2021-12-01"
 
 from codelists import *
 
@@ -23,16 +23,15 @@ study = StudyDefinition(
         """
         mechanical_valve
         """,
-
         mechanical_valve=patients.with_these_clinical_events(
-                mechanical_valve_codes,
-                on_or_before="index_date",
-                returning="binary_flag",
-                return_expectations={"incidence": 0.01,},
-            ),
-           
-   ),
-
+            mechanical_valve_codes,
+            on_or_before="index_date",
+            returning="binary_flag",
+            return_expectations={
+                "incidence": 0.01,
+            },
+        ),
+    ),
     # Ethnicity
     eth2001=patients.with_these_clinical_events(
         eth2001,
@@ -55,6 +54,4 @@ study = StudyDefinition(
             "rate": "universal",
         },
     ),
-
-
 )
