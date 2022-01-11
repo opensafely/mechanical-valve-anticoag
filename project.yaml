@@ -16,6 +16,7 @@ actions:
     outputs:
       moderately_sensitive:
         measure_csv: output/measure_monitoring_*_rate.csv
+        measures_csv_inr: output/inr_result*.csv
 
   generate_study_population_ethnicity:
     run: cohortextractor:latest generate_cohort --study-definition study_definition_ethnicity --output-dir=output
