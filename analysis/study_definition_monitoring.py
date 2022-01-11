@@ -2,29 +2,6 @@ from cohortextractor import StudyDefinition, Measure, patients
 from codelists import *
 
 
-def make_variable(code):
-    return {
-        f"snomed_{code}": (
-            patients.with_these_clinical_events(
-                codelist([code], system="snomed"),
-                between=["index_date - 2 months", "last_day_of_month(index_date)"],
-                returning="binary_flag",
-                return_expectations={
-                    "incidence": 0.1,
-                    "int": {"distribution": "normal", "mean": 3, "stddev": 1},
-                },
-            )
-        )
-    }
-
-
-def loop_over_codes(code_list):
-    variables = {}
-    for code in code_list:
-        variables.update(make_variable(code))
-    return variables
-
-
 study = StudyDefinition(
     index_date="2021-05-01",
     # Configure the expectations framework
@@ -59,7 +36,6 @@ study = StudyDefinition(
             "int": {"distribution": "population_ages"},
         },
     ),
-    **loop_over_codes(self_monitoring_prescription_codes),
     self_monitoring_historical=patients.with_these_clinical_events(
         self_monitoring_code,
         on_or_before="index_date",
@@ -70,6 +46,30 @@ study = StudyDefinition(
     ),
     self_monitoring=patients.with_these_clinical_events(
         self_monitoring_code,
+        between=["index_date - 2 months", "last_day_of_month(index_date)"],
+        returning="binary_flag",
+        return_expectations={
+            "incidence": 0.01,
+        },
+    ),
+    inr_test_strip=patients.with_these_medications(
+        inr_test_strips_code,
+        between=["index_date - 2 months", "last_day_of_month(index_date)"],
+        returning="binary_flag",
+        return_expectations={
+            "incidence": 0.01,
+        },
+    ),
+    inr_result_portable=patients.with_these_clinical_events(
+        inr_result_portable_code,
+        between=["index_date - 2 months", "last_day_of_month(index_date)"],
+        returning="binary_flag",
+        return_expectations={
+            "incidence": 0.01,
+        },
+    ),
+    inr_result_test_strip=patients.with_these_clinical_events(
+        inr_result_strip_code,
         between=["index_date - 2 months", "last_day_of_month(index_date)"],
         returning="binary_flag",
         return_expectations={
@@ -100,20 +100,20 @@ measures = [
         group_by="population",
     ),
     Measure(
-        id="monitoring_360471000000102_mechanical_valve_rate",
-        numerator="snomed_360471000000102",
+        id="monitoring_inr_test_strip_mechanical_valve_rate",
+        numerator="inr_test_strip",
         denominator="population",
         group_by="population",
     ),
     Measure(
-        id="monitoring_440432009_mechanical_valve_rate",
-        numerator="snomed_440432009",
+        id="inr_result_portable_mechanical_valve_rate",
+        numerator="inr_result_portable",
         denominator="population",
         group_by="population",
     ),
     Measure(
-        id="monitoring_402033002_mechanical_valve_rate",
-        numerator="snomed_402033002",
+        id="inr_result_test_strip_mechanical_valve_rate",
+        numerator="inr_result_test_strip",
         denominator="population",
         group_by="population",
     ),
