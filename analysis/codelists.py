@@ -59,4 +59,8 @@ eth_norecord = codelist_from_csv(
     column="code",
 )
 
-monitoring_codes = codelist(["309901000000107"], system="snomed")
+self_monitoring_code = codelist(["309901000000107"], system="snomed")
+
+self_monitoring_prescription_codes = codelist(
+    ["360471000000102", "440432009", "402033002"], system="snomed"
+)
