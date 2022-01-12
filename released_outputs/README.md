@@ -8,7 +8,6 @@
   * [EMIS/current_doac_sex.csv](EMIS/current_doac_sex.csv)
   * [EMIS/current_doac_valve_type.csv](EMIS/current_doac_valve_type.csv)
   * [EMIS/doac_rate_total.csv](EMIS/doac_rate_total.csv)
-  * [EMIS/doac_rate_total_recent.csv](EMIS/doac_rate_total_recent.csv)
   * [EMIS/patient_count.csv](EMIS/patient_count.csv)
 * TPP
   * [TPP/current_doac_af.csv](TPP/current_doac_af.csv)
@@ -23,13 +22,7 @@
 * [count.jpeg](count.jpeg)
 * [count_with_mean.jpeg](count_with_mean.jpeg)
 * output
-  * [output/current_doac_af.csv](output/current_doac_af.csv)
   * [output/current_doac_age.csv](output/current_doac_age.csv)
-  * [output/current_doac_ethnicity.csv](output/current_doac_ethnicity.csv)
-  * [output/current_doac_imd.csv](output/current_doac_imd.csv)
-  * [output/current_doac_sex.csv](output/current_doac_sex.csv)
   * [output/current_doac_valve_type.csv](output/current_doac_valve_type.csv)
-  * [output/doac_rate_total.csv](output/doac_rate_total.csv)
-  * [output/patient_count.csv](output/patient_count.csv)
 * [rate.jpeg](rate.jpeg)
 * [report_notebook.html](report_notebook.html)
