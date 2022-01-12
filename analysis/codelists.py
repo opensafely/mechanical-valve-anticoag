@@ -61,8 +61,8 @@ eth_norecord = codelist_from_csv(
 
 self_monitoring_code = codelist(["309901000000107"], system="snomed")
 
-inr_test_strips_code = codelist(["402033002"], system="snomed")
-
-inr_result_portable_code = codelist(["440432009"], system="snomed")
-
-inr_result_strip_code = codelist(["360471000000102"], system="snomed")
+inr_blood_testing_codes = codelist_from_csv(
+    "codelists/opensafely-inr_blood_testing_reagents.csv",
+    system="snomed",
+    column="dmd_id",
+)

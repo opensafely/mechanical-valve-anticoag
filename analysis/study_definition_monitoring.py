@@ -52,25 +52,9 @@ study = StudyDefinition(
             "incidence": 0.01,
         },
     ),
-    inr_test_strip=patients.with_these_medications(
-        inr_test_strips_code,
-        between=["index_date - 2 months", "last_day_of_month(index_date)"],
-        returning="binary_flag",
-        return_expectations={
-            "incidence": 0.01,
-        },
-    ),
-    inr_result_portable=patients.with_these_clinical_events(
-        inr_result_portable_code,
-        between=["index_date - 2 months", "last_day_of_month(index_date)"],
-        returning="binary_flag",
-        return_expectations={
-            "incidence": 0.01,
-        },
-    ),
-    inr_result_test_strip=patients.with_these_clinical_events(
-        inr_result_strip_code,
-        between=["index_date - 2 months", "last_day_of_month(index_date)"],
+    inr_blood_testing=patients.with_these_medications(
+        inr_blood_testing_codes,
+        between=["index_date - 2 months", "index_date"],
         returning="binary_flag",
         return_expectations={
             "incidence": 0.01,
@@ -100,20 +84,8 @@ measures = [
         group_by="population",
     ),
     Measure(
-        id="monitoring_inr_test_strip_mechanical_valve_rate",
-        numerator="inr_test_strip",
-        denominator="population",
-        group_by="population",
-    ),
-    Measure(
-        id="inr_result_portable_mechanical_valve_rate",
-        numerator="inr_result_portable",
-        denominator="population",
-        group_by="population",
-    ),
-    Measure(
-        id="inr_result_test_strip_mechanical_valve_rate",
-        numerator="inr_result_test_strip",
+        id="monitoring_blood_testing_mechanical_valve_rate",
+        numerator="inr_blood_testing",
         denominator="population",
         group_by="population",
     ),
