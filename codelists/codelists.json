@@ -49,6 +49,12 @@
       "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/eth_norecord/v1/",
       "downloaded_at": "2021-04-19 12:03:25.845959Z",
       "sha": "ca003bb021a14e704a6e81c139536ef459673da4"
+    },
+    "opensafely-inr_blood_testing_reagents.csv": {
+      "id": "opensafely/inr_blood_testing_reagents/339a06f5",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/inr_blood_testing_reagents/339a06f5/",
+      "downloaded_at": "2022-01-12 18:00:53.605198Z",
+      "sha": "96c27ee3fbc0a09e0b20554d275b89b69034f5dc"
     }
   }
 }

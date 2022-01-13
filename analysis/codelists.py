@@ -1,4 +1,5 @@
 from cohortextractor import (
+    codelist,
     codelist_from_csv,
 )
 
@@ -56,4 +57,12 @@ eth_norecord = codelist_from_csv(
     "codelists/primis-covid19-vacc-uptake-eth_norecord.csv",
     system="snomed",
     column="code",
+)
+
+self_monitoring_code = codelist(["309901000000107"], system="snomed")
+
+inr_blood_testing_codes = codelist_from_csv(
+    "codelists/opensafely-inr_blood_testing_reagents.csv",
+    system="snomed",
+    column="dmd_id",
 )

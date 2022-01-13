@@ -4,6 +4,19 @@ expectations:
   population_size: 15000
 
 actions:
+  generate_study_population_monitoring:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_monitoring --index-date-range "2019-01-01 to 2021-12-01 by month" --output-dir=output --skip-existing
+    outputs:
+      highly_sensitive:
+        cohort: output/input_monitoring_*.csv
+
+  generate_measures_monitoring:
+    run: cohortextractor:latest generate_measures --study-definition study_definition_monitoring --output-dir=output
+    needs: [generate_study_population_monitoring]
+    outputs:
+      moderately_sensitive:
+        measure_csv: output/measure_monitoring_*_rate.csv
+
   generate_study_population_ethnicity:
     run: cohortextractor:latest generate_cohort --study-definition study_definition_ethnicity --output-dir=output
     outputs:
