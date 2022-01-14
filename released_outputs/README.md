@@ -13,7 +13,8 @@
   * [EMIS/doac_rate_total.csv](EMIS/doac_rate_total.csv)
   * [EMIS/patient_count.csv](EMIS/patient_count.csv)
 * output
-  * [output/current_doac_imd.csv](output/current_doac_imd.csv)
+  * [output/blood_monitoring_current.csv](output/blood_monitoring_current.csv)
+  * [output/self_monitoring_current.csv](output/self_monitoring_current.csv)
 * [rate.jpeg](rate.jpeg)
 * [report_notebook.html](report_notebook.html)
 * TPP
