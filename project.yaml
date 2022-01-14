@@ -52,13 +52,15 @@ actions:
 
   generate_notebook:
     run: jupyter:latest jupyter nbconvert /workspace/analysis/notebook.ipynb --execute --to html --output-dir=/workspace/output --ExecutePreprocessor.timeout=86400 --no-input
-    needs: [join_ethnicity, generate_measures]
+    needs: [join_ethnicity, generate_measures, generate_measures_monitoring]
     outputs:
       moderately_sensitive:
         notebook: output/notebook.html
         figures: output/measure_*.jpeg
         total_csv: output/doac_rate_total.csv
         csvs: output/current_doac_*.csv
+        self_monitoring: output/self_monitoring_current.csv
+        blood_monitoring: output/blood_monitoring_current.csv
 
   recent_data:
     run: python:latest python analysis/recent_data.py
