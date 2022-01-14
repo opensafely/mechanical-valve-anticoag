@@ -1,6 +1,10 @@
 # Table of contents
 
+* [combined_rate.csv](combined_rate.csv)
+* [count.jpeg](count.jpeg)
+* [count_with_mean.jpeg](count_with_mean.jpeg)
 * EMIS
+  * [EMIS/blood_monitoring_current.csv](EMIS/blood_monitoring_current.csv)
   * [EMIS/current_doac_af.csv](EMIS/current_doac_af.csv)
   * [EMIS/current_doac_age.csv](EMIS/current_doac_age.csv)
   * [EMIS/current_doac_ethnicity.csv](EMIS/current_doac_ethnicity.csv)
@@ -9,6 +13,11 @@
   * [EMIS/current_doac_valve_type.csv](EMIS/current_doac_valve_type.csv)
   * [EMIS/doac_rate_total.csv](EMIS/doac_rate_total.csv)
   * [EMIS/patient_count.csv](EMIS/patient_count.csv)
+  * [EMIS/self_monitoring_current.csv](EMIS/self_monitoring_current.csv)
+* output
+  * [output/current_doac_age.csv](output/current_doac_age.csv)
+* [rate.jpeg](rate.jpeg)
+* [report_notebook.html](report_notebook.html)
 * TPP
   * [TPP/blood_monitoring_current.csv](TPP/blood_monitoring_current.csv)
   * [TPP/current_doac_af.csv](TPP/current_doac_af.csv)
@@ -20,11 +29,3 @@
   * [TPP/doac_rate_total.csv](TPP/doac_rate_total.csv)
   * [TPP/patient_count.csv](TPP/patient_count.csv)
   * [TPP/self_monitoring_current.csv](TPP/self_monitoring_current.csv)
-* [combined_rate.csv](combined_rate.csv)
-* [count.jpeg](count.jpeg)
-* [count_with_mean.jpeg](count_with_mean.jpeg)
-* output
-  * [output/blood_monitoring_current.csv](output/blood_monitoring_current.csv)
-  * [output/self_monitoring_current.csv](output/self_monitoring_current.csv)
-* [rate.jpeg](rate.jpeg)
-* [report_notebook.html](report_notebook.html)
