@@ -1,8 +1,8 @@
 # Potentially inappropriate prescribing of DOACs to people with mechanical heart valves: a federated analysis of 57.9 million patients’ primary care records in situ using OpenSAFELY
 
 * The published manuscript is available in Thrombosis Research [here](https://doi.org/10.1016/j.thromres.2022.01.023).
-* An open access version of the published manuscript is available [here](https://ora.ox.ac.uk/objects/uuid:aa50f867-d3a4-45ff-9173-1c9677a7ba4f).
 * A summary of the work is also available on OpenSAFELY Reports [here](https://reports.opensafely.org/reports/doac-prescribing-in-people-with-a-mechanical-heart-valve-replacement/).
+* A self-archived version of the published manuscript is available [here](https://ora.ox.ac.uk/objects/uuid:aa50f867-d3a4-45ff-9173-1c9677a7ba4f).
 * Raw model outputs, including charts, crosstabs, etc, are in `released_outputs/`
 * If you are interested in how we defined our variables, take a look at the [study definition](analysis/study_definition.py); this is written in `python`, but non-programmers should be able to understand what is going on there
 * If you are interested in how we defined our code lists, look in the [codelists folder](./codelists/).
